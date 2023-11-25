@@ -21,7 +21,8 @@ void CCGRandom::Update() {
 }
 void CCGRandom::Update(long double seed) {
 	m_fSeed = fabs(seed);
-
+	m_iIndex = time(NULL)%m_iListSize;
+	
 	float x = 0.0;
 
 	for (unsigned long long int i = 0; i < m_iListSize; i++) {
