@@ -4,24 +4,22 @@
 
 int main() {
 
-	CCGRandom* random = new CCGRandom();
-	delete random;
-
-
-
-	float x = 0.0;
-	float y = 0.0;
-	float z = 0.0;
-	float a = 0.0;
-
-	for (int i = 0; i < 100; i++) {
-		x = (-2.0 + x) / (x + 1.0);
-		y = (-4.0 + y) / (y + 1.0);
-		z = (-5.0 + z) / (z + 1.0);
-		printf("%f	%f	%f\n", x, 1.0/x, z);
+	CCGRandom* random = new CCGRandom(2.0, 3000, 10);
+	FILE* fresult = fopen("result.txt", "w+");
+	if (fresult == NULL) {
+		for (int i = 0; i < random->MaxIndex(); i++)
+			printf("%f\n", random->Index(i));
+		
+		delete random;
+		return 0;
 	}
 
-	getchar();
+	for (int i = 0; i < random->MaxIndex(); i++)
+		fprintf(fresult, "%f\n", random->Index(i));
+	
+	fclose(fresult);
+
+	delete random;
 
 	return 0;
 }
