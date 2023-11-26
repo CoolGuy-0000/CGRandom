@@ -5,20 +5,21 @@
 int main() {
 
 	CCGRandom* random = new CCGRandom();
-
-	int count1 = 0;
-	int count2 = 0;
-
-	for (int i = 0; i < 1000; i++) {
-		if ((int)fabs(random->Get() * 100.0) % 2)count1++;
-		else count2++;
-
-		random->Update();
-	}
-
-	printf("%d : %d\n", count1, count2);
-
 	delete random;
+
+
+
+	float x = 0.0;
+	float y = 0.0;
+	float z = 0.0;
+	float a = 0.0;
+
+	for (int i = 0; i < 100; i++) {
+		x = (-2.0 + x) / (x + 1.0);
+		y = (-4.0 + y) / (y + 1.0);
+		z = (-5.0 + z) / (z + 1.0);
+		printf("%f	%f	%f\n", x, 1.0/x, z);
+	}
 
 	getchar();
 
